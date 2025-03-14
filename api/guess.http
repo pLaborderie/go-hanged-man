@@ -1,0 +1,5 @@
+### POST request to guess a letter
+POST http://localhost:8080/o
+
+### POST request to start a new game
+POST http://localhost:8080/start
