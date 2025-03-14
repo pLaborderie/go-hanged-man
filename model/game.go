@@ -1,7 +1,6 @@
 package model
 
 import (
-	"fmt"
 	"hangedman/data"
 	"math/rand"
 	"slices"
@@ -36,10 +35,6 @@ func (game *Game) GetWord() string {
 	return displayedWord
 }
 
-func (game *Game) ShowWord() {
-	fmt.Println(game.GetWord())
-}
-
 func (game *Game) IsGameWon() bool {
 	for _, letter := range game.Word {
 		if !slices.Contains(game.GuessedLetters, string(letter)) {
@@ -71,24 +66,8 @@ func (game *Game) GetLivesLeft() int {
 	return maxTries - len(game.GetWrongGuesses())
 }
 
-func (game *Game) ShowLivesLeft() {
-	livesLeft := game.GetLivesLeft()
-	fmt.Println("**********Lives left: ", livesLeft, "**********")
-}
-
-func (game *Game) ShowWrongGuesses() {
-	wrongGuesses := game.GetWrongGuesses()
-	if len(wrongGuesses) > 0 {
-		fmt.Println("Wrong guesses: ", strings.Join(wrongGuesses, " "))
-	}
-}
-
 func (game *Game) GetHangedMan() string {
 	return data.HangedManArt[game.GetLivesLeft()]
-}
-
-func (game *Game) ShowHangedMan() {
-	fmt.Println(game.GetHangedMan())
 }
 
 func (game *Game) IsGuessed(letter string) bool {
